@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#10111b">
+<title>ViralForge AI — Creator Studio</title>
+<style>
+:root{--bg:#0c0d14;--panel:#151722;--panel2:#1b1e2b;--line:#292d3d;--text:#f5f6fb;--muted:#a2a7b8;--accent:#a78bfa;--accent2:#6ee7d8;--danger:#ff7f9c}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 80% 0%,#292044 0,transparent 32%),var(--bg);color:var(--text);font:15px/1.5 Inter,system-ui,Segoe UI,Arial,sans-serif}
+button,input,select,textarea{font:inherit}button{cursor:pointer}
+.app{display:grid;grid-template-columns:250px 1fr;min-height:100vh}.sidebar{border-right:1px solid var(--line);padding:26px 18px;background:#10111aeF;position:sticky;top:0;height:100vh}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:19px;letter-spacing:-.5px;margin:2px 8px 34px}.logo{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#6d5dfc);display:grid;place-items:center;color:#111;font-weight:900}
+.nav-label{font-size:10px;color:#73798d;text-transform:uppercase;letter-spacing:1.5px;margin:22px 10px 9px}.nav button{width:100%;border:0;background:transparent;color:var(--muted);text-align:left;padding:11px 12px;border-radius:10px;margin:2px 0;display:flex;gap:12px;align-items:center}.nav button.active,.nav button:hover{background:#27243a;color:#fff}.nav .ico{width:20px;text-align:center}.side-note{position:absolute;bottom:22px;left:18px;right:18px;background:linear-gradient(135deg,#25213a,#172a31);border:1px solid var(--line);padding:15px;border-radius:14px;color:var(--muted);font-size:12px}.side-note b{display:block;color:#fff;font-size:13px;margin-bottom:4px}
+main{padding:32px clamp(18px,4vw,56px) 60px;max-width:1500px;width:100%;margin:auto}.top{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:28px}.eyebrow{color:var(--accent2);font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase}.top h1{font-size:clamp(27px,4vw,38px);letter-spacing:-1.5px;margin:5px 0}.sub{color:var(--muted);margin:0}.pill{border:1px solid #394052;border-radius:999px;padding:8px 12px;color:#c9cce0;font-size:12px;white-space:nowrap}
+.hero{padding:25px;border-radius:20px;background:linear-gradient(115deg,#292044,#1b3540);border:1px solid #40365d;margin-bottom:23px;display:flex;justify-content:space-between;gap:20px;align-items:center}.hero h2{font-size:23px;margin:5px 0 7px}.hero p{color:#c0c3d4;margin:0;max-width:610px}.hero-mark{font-size:52px;filter:drop-shadow(0 8px 20px #0008)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px}.stat,.card{background:var(--panel);border:1px solid var(--line);border-radius:16px}.stat{padding:17px}.stat small{color:var(--muted)}.stat strong{display:block;font-size:25px;margin-top:3px}.section-head{display:flex;justify-content:space-between;align-items:center;margin:26px 0 13px}.section-head h2{font-size:18px;margin:0}.tools{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.tool{padding:18px;transition:.2s}.tool:hover{transform:translateY(-2px);border-color:#62558e}.tool .symbol{width:39px;height:39px;border-radius:12px;background:#29243d;display:grid;place-items:center;font-size:19px;margin-bottom:13px}.tool h3{margin:0 0 5px;font-size:15px}.tool p{margin:0;color:var(--muted);font-size:12px;min-height:38px}.tool button,.primary{border:0;background:linear-gradient(100deg,#a78bfa,#7c6af5);color:#151321;font-weight:800;padding:10px 14px;border-radius:10px;margin-top:14px}.tool button{width:100%}.workspace{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,.8fr);gap:16px}.card{padding:20px}.card h3{margin:0 0 5px}.muted{color:var(--muted);font-size:13px}.field{margin-top:14px}.field label{display:block;font-size:12px;color:#c6c9d8;margin-bottom:6px}.field input,.field select,.field textarea{width:100%;background:#0f111a;border:1px solid #34394b;color:#fff;border-radius:10px;padding:11px 12px;outline:none}.field textarea{min-height:95px;resize:vertical}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--accent)}.result{white-space:pre-wrap;background:#0f111a;border:1px solid #303548;border-radius:12px;padding:15px;min-height:190px;color:#e7e8f2;font-size:13px}.result.empty{color:#777e91;display:grid;place-items:center;text-align:center}.actions{display:flex;gap:9px;flex-wrap:wrap}.secondary{background:#252938;border:1px solid #3b4052;color:#e7e8f2;padding:9px 12px;border-radius:9px;margin-top:12px}.secondary:hover{background:#30364a}.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:7px;margin-top:16px}.day{background:#10121c;border:1px solid var(--line);border-radius:9px;padding:9px 4px;text-align:center;min-height:64px;font-size:11px;color:var(--muted)}.day b{display:block;color:#fff;font-size:13px;margin-bottom:4px}.day.filled{border-color:#65559a;background:#211d32;color:#c9baff}.hidden{display:none!important}.toast{position:fixed;bottom:20px;right:20px;background:#202638;border:1px solid #4c5570;color:white;padding:12px 16px;border-radius:10px;opacity:0;transform:translateY(10px);transition:.2s;pointer-events:none}.toast.show{opacity:1;transform:translateY(0)}
+footer{color:#73798b;font-size:11px;margin-top:30px}
+@media(max-width:900px){.app{grid-template-columns:1fr}.sidebar{height:auto;position:relative;padding:14px;border-right:0;border-bottom:1px solid var(--line)}.brand{margin:0 5px 12px}.nav{display:flex;overflow:auto;gap:4px}.nav-label,.side-note{display:none}.nav button{white-space:nowrap;width:auto;padding:9px 11px}.nav .ico{display:none}main{padding-top:22px}.workspace{grid-template-columns:1fr}}
+@media(max-width:620px){.stats{grid-template-columns:1fr 1fr}.stats .stat:last-child{display:none}.tools{grid-template-columns:1fr 1fr}.hero-mark{display:none}.top{align-items:flex-start;flex-direction:column}.pill{white-space:normal}.calendar{gap:4px}.day{min-height:55px;padding:6px 2px}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand"><div class="logo">V</div> ViralForge <span style="color:var(--accent);font-size:11px">AI</span></div>
+  <div class="nav-label">Workspace</div>
+  <nav class="nav">
+    <button class="active" data-page="home"><span class="ico">⌂</span>Overview</button>
+    <button data-page="studio"><span class="ico">✦</span>AI Studio</button>
+    <button data-page="calendar"><span class="ico">▦</span>Content planner</button>
+  </nav>
+  <div class="nav-label">Create</div>
+  <nav class="nav">
+    <button data-tool="ideas"><span class="ico">💡</span>Video ideas</button>
+    <button data-tool="scripts"><span class="ico">✍️</span>Script writer</button>
+    <button data-tool="captions"><span class="ico">⌁</span>Captions</button>
+    <button data-tool="hashtags"><span class="ico">#</span>Hashtags</button>
+  </nav>
+  <div class="side-note"><b>Creator tip</b>Consistency beats waiting for the perfect idea. Make something useful, post it, learn, and improve.</div>
+</aside>
+<main>
+  <section id="home">
+    <div class="top"><div><div class="eyebrow">Your creator workspace</div><h1>Make content that moves.</h1><p class="sub">Plan smarter, create faster, and keep showing up.</p></div><div class="pill">✦ Free starter workspace</div></div>
+    <div class="hero"><div><div class="eyebrow">Welcome to your studio</div><h2>Turn one idea into your next post.</h2><p>Generate content prompts, draft short-form scripts, write captions and build a simple posting plan — all in one place.</p><button class="primary" onclick="showPage('studio')">Open AI Studio →</button></div><div class="hero-mark">⚡</div></div>
+    <div class="stats"><div class="stat"><small>Tools ready</small><strong>4</strong></div><div class="stat"><small>Platforms supported</small><strong>4+</strong></div><div class="stat"><small>Starting cost</small><strong>$0</strong></div></div>
+    <div class="section-head"><h2>Quick-create tools</h2><span class="muted">Choose what you need</span></div>
+    <div class="tools">
+      <article class="card tool"><div class="symbol">💡</div><h3>Video ideas</h3><p>Find fresh angles for your next short video.</p><button onclick="chooseTool('ideas')">Generate ideas</button></article>
+      <article class="card tool"><div class="symbol">✍️</div><h3>Script writer</h3><p>Build a hook, main message and call to action.</p><button onclick="chooseTool('scripts')">Write a script</button></article>
+      <article class="card tool"><div class="symbol">#</div><h3>Captions & hashtags</h3><p>Give your post a clear message and useful tags.</p><button onclick="chooseTool('captions')">Create a caption</button></article>
+    </div>
+    <footer>ViralForge AI prototype · Your drafts stay in this browser session. This demo uses built-in templates, not a connected AI service.</footer>
+  </section>
+  <section id="studio" class="hidden">
+    <div class="top"><div><div class="eyebrow">Creation workspace</div><h1>AI Studio</h1><p class="sub">Choose a tool and shape your next post.</p></div><div class="pill">✦ Template-powered demo</div></div>
+    <div class="workspace">
+      <div class="card">
+        <h3 id="toolTitle">Video idea generator</h3><p class="muted" id="toolDesc">Tell us your niche and platform.</p>
+        <div class="field"><label for="topic">Your topic or niche</label><input id="topic" placeholder="e.g. motivation, student life, fashion"></div>
+        <div class="field"><label for="platform">Platform</label><select id="platform"><option>TikTok</option><option>YouTube Shorts</option><option>Instagram Reels</option><option>Facebook Reels</option></select></div>
+        <div class="field" id="toneWrap"><label for="tone">Style</label><select id="tone"><option>Motivational</option><option>Funny</option><option>Educational</option><option>Storytelling</option><option>Confident</option></select></div>
+        <div class="field" id="extraWrap"><label for="extra">Extra details (optional)</label><textarea id="extra" placeholder="Who is this for? What should viewers feel or learn?"></textarea></div>
+        <button class="primary" style="width:100%" onclick="generate()">Generate content ✦</button>
+      </div>
+      <div class="card"><div class="section-head" style="margin:0 0 12px"><h3>Your result</h3><span class="muted">Editable draft</span></div><div class="result empty" id="result">Your generated content will appear here.<br>Start by filling in the details.</div><div class="actions"><button class="secondary" onclick="copyResult()">Copy result</button><button class="secondary" onclick="saveResult()">Save draft</button></div><p class="muted" id="savedMsg"></p></div>
+    </div>
+  </section>
+  <section id="calendar" class="hidden">
+    <div class="top"><div><div class="eyebrow">Stay consistent</div><h1>Content planner</h1><p class="sub">A simple seven-day starter plan you can customise.</p></div></div>
+    <div class="card"><h3>Your weekly posting plan</h3><p class="muted">Tap a day to add or edit a content idea. Your plan is kept in this page while it remains open.</p><div class="calendar" id="calendarGrid"></div><div class="field"><label for="planDay">Selected day</label><select id="planDay"><option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option><option>Friday</option><option>Saturday</option><option>Sunday</option></select></div><div class="field"><label for="planText">Post idea</label><input id="planText" placeholder="e.g. Share 3 lessons I learned this week"></div><button class="primary" onclick="addPlan()">Save to planner</button></div>
+  </section>
+</main>
+</div>
+<div class="toast" id="toast">Copied!</div>
+<script>
+const tools={
+ ideas:{title:"Video idea generator",desc:"Get practical short-form video concepts.",button:"Generate ideas"},
+ scripts:{title:"Short-video script writer",desc:"Create a hook, story and call to action.",button:"Write my script"},
+ captions:{title:"Caption generator",desc:"Write a caption that fits your message.",button:"Create caption"},
+ hashtags:{title:"Hashtag helper",desc:"Build a focused set of topic hashtags.",button:"Generate hashtags"}
+};
+let currentTool="ideas", plans={}, lastResult="";
+function showPage(page){document.querySelectorAll("main section").forEach(s=>s.classList.add("hidden"));document.getElementById(page).classList.remove("hidden");document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===page));}
+function chooseTool(t){currentTool=t;showPage("studio");document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.tool===t));document.getElementById("toolTitle").textContent=tools[t].title;document.getElementById("toolDesc").textContent=tools[t].desc;document.getElementById("result").className="result empty";document.getElementById("result").textContent="Your generated content will appear here.";document.getElementById("savedMsg").textContent="";}
+document.querySelectorAll("[data-page]").forEach(b=>b.addEventListener("click",()=>showPage(b.dataset.page)));
+document.querySelectorAll("[data-tool]").forEach(b=>b.addEventListener("click",()=>chooseTool(b.dataset.tool)));
+function cleanTopic(){return document.getElementById("topic").value.trim()||"personal growth";}
+function generate(){
+ const topic=cleanTopic(), platform=document.getElementById("platform").value, tone=document.getElementById("tone").value.toLowerCase(), extra=document.getElementById("extra").value.trim();
+ let out="";
+ if(currentTool==="ideas"){
+  const ideas=[
+   `“3 things I wish I knew earlier about ${topic}” — share useful lessons with quick on-screen text.`,
+   `“The truth about ${topic} nobody explains” — open with a surprising but honest point.`,
+   `A beginner's guide to ${topic} in 30 seconds — explain one simple step at a time.`,
+   `“Stop doing this if you care about ${topic}” — explain a common mistake and a better approach.`,
+   `A short personal story about a moment that changed how you think about ${topic}.`
+  ];
+  out=`5 video ideas for ${platform} about ${topic}:\n\n`+ideas.map((x,i)=>(i+1)+". "+x).join("\n\n")+"\n\nTip: Pick one idea, make the first 2 seconds clear, and keep the video focused on one message.";
+ }else if(currentTool==="scripts"){
+  out=`VIDEO SCRIPT — ${topic.toUpperCase()}\nStyle: ${tone}\nPlatform: ${platform}\n\nHOOK (first 2–3 seconds)\n“Let me tell you something about ${topic} that could change the way you see things.”\n\nMAIN MESSAGE\n“Most people wait until everything is perfect before they begin. But progress comes from taking one small step, learning from it, and trying again. You do not need to know every answer today. Focus on what you can do with what you have.”\n\nCLOSE\n“If this helped you, save it and share it with someone who needs the reminder.”\n\n${extra?"YOUR EXTRA DIRECTION\n"+extra:""}\n\nRecording tip: Speak naturally, pause after the hook, and add captions so viewers can follow along.`;
+ }else if(currentTool==="captions"){
+  out=`${topic} is not about getting everything right on the first try. It's about learning, staying curious and taking the next step. Small progress still counts. ✨\n\nWhat is one thing you've learned about ${topic}? Tell me below.\n\n#${slug(topic)} #KeepLearning #DailyGrowth`;
+ }else{
+  const base=[slug(topic),"ContentCreator","CreatorTips","DailyInspiration","LearnAndGrow"];
+  out=`Suggested hashtags for ${platform}:\n\n${base.map(x=>"#"+x).join("  ")}\n\nUse 3–5 relevant tags rather than adding a long list of unrelated hashtags. Check what is currently popular in your niche before posting.`;
+ }
+ lastResult=out;const box=document.getElementById("result");box.className="result";box.textContent=out;document.getElementById("savedMsg").textContent="Review and edit this draft before publishing.";
+}
+function slug(s){return s.toLowerCase().replace(/[^a-z0-9 ]/g,"").trim().split(/\s+/).filter(Boolean).map(w=>w[0].toUpperCase()+w.slice(1)).join("")||"Creator";}
+function copyResult(){if(!lastResult){toast("Generate something first.");return}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(lastResult).then(()=>toast("Copied to clipboard!")).catch(()=>toast("Copy is unavailable in this browser."));}else{toast("Clipboard is unavailable in this browser.");}}
+function saveResult(){if(!lastResult){toast("Generate something first.");return}try{let arr=JSON.parse(localStorage.getItem("vfDrafts")||"[]");arr.unshift({text:lastResult,date:new Date().toLocaleString()});localStorage.setItem("vfDrafts",JSON.stringify(arr.slice(0,20)));document.getElementById("savedMsg").textContent="Draft saved in this browser.";toast("Draft saved!");}catch(e){toast("Could not save draft on this device.");}}
+function toast(msg){let t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),2100);}
+function renderCalendar(){let days=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];document.getElementById("calendarGrid").innerHTML=days.map((d,i)=>`<div class="day ${plans[i]?"filled":""}" onclick="selectDay(${i})"><b>${d}</b>${plans[i]?escapeHtml(plans[i]).slice(0,32):"＋ Add post"}</div>`).join("");}
+function selectDay(i){document.getElementById("planDay").selectedIndex=i;document.getElementById("planText").value=plans[i]||"";}
+function addPlan(){let i=document.getElementById("planDay").selectedIndex,v=document.getElementById("planText").value.trim();if(!v){toast("Enter a post idea first.");return}plans[i]=v;renderCalendar();toast("Planner updated!");}
+function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+renderCalendar();
+</script>
+</body>
+</html>
